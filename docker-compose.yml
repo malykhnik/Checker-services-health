@@ -26,6 +26,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://checker-microservice-db:5432/checker_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
     depends_on:
       checker-microservice-db:
         condition: service_healthy
@@ -66,6 +67,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://notification-microservice-db:5432/notification_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
     depends_on:
       notification-microservice-db:
         condition: service_healthy

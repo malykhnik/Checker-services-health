@@ -3,7 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Auth_microservice" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Checker-services-health" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Checker_microservice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Frontend_microservice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Notification_microservice" vcs="Git" />
