@@ -14,7 +14,7 @@
 
 # Notification_microservice
 
-Отсылает данные об отвалившихся сервисах в ТГ-бота и по почте(SMTP). Общается в Checker_microservice с помощью Kafka.
+Отсылает данные об отвалившихся сервисах в ТГ-бота и по почте(SMTP). Общается с Checker_microservice с помощью Kafka.
 
 # Frontend_microservice
 
