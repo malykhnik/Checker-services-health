@@ -2,7 +2,7 @@
 
 # Схема работы программы
 
-![image](https://github.com/user-attachments/assets/77db8939-4400-42d8-983e-6395a6e9e699)
+![image](https://github.com/user-attachments/assets/e02f4b05-e9c7-46a7-ab8e-78b5caf825ee)
 
 # Auth_microservice
 
