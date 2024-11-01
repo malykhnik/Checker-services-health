@@ -6,7 +6,7 @@
 
 # Auth_microservice
 
-Пользователь на фронтенде вводит логин и пароль, а Auth_microservice возвращает пару JWT + Refresh Token. Также реализован функционад logout на основе blacklist с помощью Redis.
+Пользователь на фронтенде вводит логин и пароль, а Auth_microservice возвращает пару JWT + Refresh Token. Также реализован функционал logout на основе blacklist с помощью Redis.
 
 # Checker_microservice
 
