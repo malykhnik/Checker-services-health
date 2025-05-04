@@ -1,0 +1,174 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7.4
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - my_shared_network
+
+  checker-microservice:
+    build:
+      context: ./Checker_microservice
+      dockerfile: Dockerfile
+    image: checker-microservice:latest
+    container_name: checker-microservice
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://checker-microservice-db:5432/checker_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    depends_on:
+      checker-microservice-db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - my_shared_network
+
+  auth-microservice:
+    build:
+      context: ./Auth_microservice
+      dockerfile: Dockerfile
+    image: auth-microservice:latest
+    container_name: auth-microservice
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://auth-microservice-db:5432/auth_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      auth-microservice-db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - my_shared_network
+
+  notification-microservice:
+    build:
+      context: ./Notification_microservice
+      dockerfile: Dockerfile
+    image: notification-microservice:latest
+    container_name: notification-microservice
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://notification-microservice-db:5432/notification_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    depends_on:
+      notification-microservice-db:
+        condition: service_healthy
+    networks:
+      - my_shared_network
+
+  frontend-microservice:
+    build:
+      context: ./Frontend_microservice
+      dockerfile: Dockerfile
+    image: frontend-microservice:latest
+    container_name: frontend-microservice
+    ports:
+      - "5173:5173"
+    depends_on:
+      - checker-microservice
+      - auth-microservice
+      - notification-microservice
+    networks:
+      - my_shared_network
+
+
+  checker-microservice-db:
+    image: postgres:16.1
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    container_name: checker-microservice-db
+    environment:
+      POSTGRES_DB: checker_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - my_shared_network
+
+  auth-microservice-db:
+    image:  postgres:16.1
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    container_name: auth-microservice-db
+    environment:
+      POSTGRES_DB: auth_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+    networks:
+      - my_shared_network
+
+  notification-microservice-db:
+    image: postgres:16.1
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    container_name: notification-microservice-db
+    environment:
+      POSTGRES_DB: notification_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5435:5432"
+    networks:
+      - my_shared_network
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - my_shared_network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.3.0
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_INTERNAL://localhost:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    networks:
+      - my_shared_network
+
+
+networks:
+  my_shared_network:
+    external: true
