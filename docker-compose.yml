@@ -74,20 +74,20 @@ services:
     networks:
       - my_shared_network
 
-  frontend-microservice:
-    build:
-      context: ./Frontend_microservice
-      dockerfile: Dockerfile
-    image: frontend-microservice:latest
-    container_name: frontend-microservice
-    ports:
-      - "5173:5173"
-    depends_on:
-      - checker-microservice
-      - auth-microservice
-      - notification-microservice
-    networks:
-      - my_shared_network
+#  frontend-microservice:
+#    build:
+#      context: ./Frontend_microservice
+#      dockerfile: Dockerfile
+#    image: frontend-microservice:latest
+#    container_name: frontend-microservice
+#    ports:
+#      - "5173:5173"
+#    depends_on:
+#      - checker-microservice
+#      - auth-microservice
+#      - notification-microservice
+#    networks:
+#      - my_shared_network
 
 
   checker-microservice-db:

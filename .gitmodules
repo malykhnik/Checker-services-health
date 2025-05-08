@@ -1,12 +1,12 @@
 [submodule "Frontend_microservice"]
 	path = Frontend_microservice
-	url = https://github.com/malykhnik/Frontend_microservice.git
+	url = https://github.com/malykhnik/Frontend_microservice
 [submodule "Auth_microservice"]
 	path = Auth_microservice
-	url = https://github.com/malykhnik/Auth_microservice.git
+	url = https://github.com/malykhnik/Auth_microservice
 [submodule "Notification_microservice"]
 	path = Notification_microservice
-	url = https://github.com/malykhnik/Notification_microservice.git
+	url = https://github.com/malykhnik/Notification_microservice
 [submodule "Checker_microservice"]
 	path = Checker_microservice
-	url = https://github.com/malykhnik/Checker_microservice.git
+	url = https://github.com/malykhnik/Checker_microservice
