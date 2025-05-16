@@ -23,9 +23,25 @@
 
 Реализован на React JS. Содержит 3 основные страницы -  регистрация, логин и страница с эндоинтами.
 
-# Как это выглядит на фронтенде
+# Как это выглядит на фронтенде и в Grafana
 
-![image](https://github.com/user-attachments/assets/c5d4585c-1b63-4b6d-b64a-1d53b3f3c0cb)
+<img width="1687" alt="image" src="https://github.com/user-attachments/assets/eadaf6bf-27f6-4549-a0ba-173b4988a1b5" />
 
-![image](https://github.com/user-attachments/assets/7f447117-90ce-4f92-b710-6a00bd507627)
+------------------------------------------------------------------------------------------------------------------------
+
+<img width="1574" alt="image" src="https://github.com/user-attachments/assets/603798ef-6b99-4e6b-a435-416b5bead295" />
+
+------------------------------------------------------------------------------------------------------------------------
+
+<img width="1468" alt="image" src="https://github.com/user-attachments/assets/c298779d-c163-4cd4-98b9-aa690e1fa3a8" />
+
+------------------------------------------------------------------------------------------------------------------------
+
+<img width="1503" alt="image" src="https://github.com/user-attachments/assets/8a5ac07d-fcfd-40ea-9f0a-02c1f1aabd95" />
+
+------------------------------------------------------------------------------------------------------------------------
+
+<img width="1712" alt="image" src="https://github.com/user-attachments/assets/34976321-ee9a-4b0e-b7d0-f1789685db2d" />
+
+
 
