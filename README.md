@@ -2,7 +2,7 @@
 
 # Схема работы программы(диаграмма контейнеров)
 
-<img width="751" alt="image" src="https://github.com/user-attachments/assets/7db06197-29f8-461f-a5c5-b5f12518ed07" />
+<img width="742" alt="image" src="https://github.com/user-attachments/assets/4bdf0b7a-3fec-4a09-bbcb-37fd21cfb88a" />
 
 # Auth_microservice
 
