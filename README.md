@@ -1,7 +1,10 @@
 # Checker-services-health
 
-# Схема работы программы(диаграмма контейнеров)
+# Диаграмма контейнеров
 
+<img width="848" alt="image" src="https://github.com/user-attachments/assets/858b0e75-204a-4348-90fc-ad28b7509d5c" />
+
+# Структурная схема
 ![Uploading image.png…]()
 
 # Auth_microservice
