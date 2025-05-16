@@ -2,10 +2,10 @@
 
 # Диаграмма контейнеров
 
-<img width="848" alt="image" src="https://github.com/user-attachments/assets/858b0e75-204a-4348-90fc-ad28b7509d5c" />
+<img width="610" alt="image" src="https://github.com/user-attachments/assets/be155f0e-830c-4969-a181-c375a07fae2d" />
 
 # Структурная схема
-![Uploading image.png…]()
+<img width="848" alt="image" src="https://github.com/user-attachments/assets/858b0e75-204a-4348-90fc-ad28b7509d5c" />
 
 # Auth_microservice
 
